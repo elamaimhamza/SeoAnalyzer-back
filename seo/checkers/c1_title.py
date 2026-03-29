@@ -1,8 +1,8 @@
-from .base import VérificateurDeBase
+from .base import VerificateurDeBase
 from seo.regles import appliquer_regles
 
 
-class VérificateurTitre(VérificateurDeBase):
+class VerificateurTitre(VerificateurDeBase):
     code      = "C1"
     nom       = "Balise Title"
     poids     = 15

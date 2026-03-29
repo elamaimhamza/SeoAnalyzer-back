@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 
 
-class VérificateurDeBase(ABC):
+class VerificateurDeBase(ABC):
     
     code       = ""
     nom        = ""

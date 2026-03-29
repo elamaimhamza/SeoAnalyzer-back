@@ -1,8 +1,8 @@
-from .base import VérificateurDeBase
+from .base import VerificateurDeBase
 from seo.regles import appliquer_regles
 
 
-class VérificateurMetaDescription(VérificateurDeBase):
+class VerificateurMetaDescription(VerificateurDeBase):
     code      = "C2"
     nom       = "Meta Description"
     poids     = 10
