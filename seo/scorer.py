@@ -1,4 +1,5 @@
 def calculer_score(resultats: list) -> tuple:
+    
     """
     Calcule le score global sur 100 et attribue un grade.
 
