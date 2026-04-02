@@ -12,25 +12,25 @@ class VerificateurH1(VerificateurDeBase):
         nombre_h1  = len(balises_h1)
         texte_h1   = balises_h1[0].get_text(strip=True) if nombre_h1 > 0 else ""
 
-        règles = [
+        regles = [
             {
-                "vérifié": nombre_h1 > 0,
+                "verifie": nombre_h1 > 0,
                 "points":  4,
                 "message": "Ajouter une balise H1 sur la page"
             },
             {
-                "vérifié": nombre_h1 == 1,
+                "verifie": nombre_h1 == 1,
                 "points":  4,
                 "message": f"{nombre_h1} balises H1 trouvées — il ne doit y en avoir qu'une seule"
             },
             {
-                "vérifié": len(texte_h1) > 0,
+                "verifie": len(texte_h1) > 0,
                 "points":  2,
                 "message": "Le H1 est vide — ajouter un contenu significatif"
             },
         ]
 
-        score, recommandations = appliquer_règles(règles)
+        score, recommandations = appliquer_regles(regles)
 
         return {
             "score":           score,

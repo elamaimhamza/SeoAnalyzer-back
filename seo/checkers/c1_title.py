@@ -15,17 +15,17 @@ class VerificateurTitre(VerificateurDeBase):
 
         regles = [
             {
-                "vérifié": balise_title is not None,
+                "verifie": balise_title is not None,
                 "points":  5,
                 "message": "Ajouter une balise <title>"
             },
             {
-                "vérifié": longueur > 0,
+                "verifie": longueur > 0,
                 "points":  4,
                 "message": "La balise <title> ne doit pas être vide"
             },
             {
-                "vérifié": 50 <= longueur <= 60,
+                "verifie": 50 <= longueur <= 60,
                 "points":  6,
                 "message": f"Longueur {longueur} car. — viser entre 50 et 60 caractères"
             },

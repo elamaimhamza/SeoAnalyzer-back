@@ -15,17 +15,17 @@ class VerificateurMetaDescription(VerificateurDeBase):
 
         regles = [
             {
-                "vérifié": meta is not None,
+                "verifie": meta is not None,
                 "points":  4,
                 "message": "Ajouter une balise <meta name='description'>"
             },
             {
-                "vérifié": longueur > 0,
+                "verifie": longueur > 0,
                 "points":  3,
                 "message": "La meta description ne doit pas être vide"
             },
             {
-                "vérifié": 150 <= longueur <= 160,
+                "verifie": 150 <= longueur <= 160,
                 "points":  3,
                 "message": f"Longueur {longueur} car. — viser entre 150 et 160 caractères"
             },
