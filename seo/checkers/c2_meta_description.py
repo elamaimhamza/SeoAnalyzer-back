@@ -27,7 +27,7 @@ class VerificateurMetaDescription(VerificateurDeBase):
             {
                 "verifie": 150 <= longueur <= 160,
                 "points":  3,
-                "message": f"Longueur {longueur} car. — viser entre 150 et 160 caractères"
+                "message": f"Longueur {longueur} Je vous conseille de viser entre 150 et 160 caractères"
             },
         ]
 

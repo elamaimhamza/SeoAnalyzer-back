@@ -27,7 +27,7 @@ class VerificateurTitre(VerificateurDeBase):
             {
                 "verifie": 50 <= longueur <= 60,
                 "points":  6,
-                "message": f"Longueur {longueur} car. — viser entre 50 et 60 caractères"
+                "message": f"Longueur {longueur} Je vous conseille de viser entre 50 et 60 caractères"
             },
         ]
 

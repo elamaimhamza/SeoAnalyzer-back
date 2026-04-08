@@ -66,7 +66,7 @@ class ResultatCritere(Base):
     weight         = Column(SmallInteger, nullable=True)
     status         = Column(String(10), nullable=False)
     details        = Column(JSON, nullable=True)
-    recommendations= Column(JSON, nullable=True)
+    recommendations = Column(JSON, nullable=True)
 
     rapport = relationship("RapportSEO", back_populates="resultats")
     critere = relationship("CriteresSEO", back_populates="resultats")

@@ -21,7 +21,7 @@ class VerificateurStructureURL(VerificateurDeBase):
             {
                 "verifie": longueur <= 100,
                 "points":  2,
-                "message": f"URL trop longue ({longueur} car.) — viser moins de 100 caractères"
+                "message": f"URL trop longue ({longueur} Je vous conseille de viser moins de 100 caractères"
             },
             {
                 "verifie": len(parametres) <= 2,
