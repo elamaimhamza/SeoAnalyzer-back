@@ -32,3 +32,4 @@ class AnalyseReponse(BaseModel):
     statut_http:            int
     criteres:               List[ResultatCritere]
     toutes_recommandations: List[Recommandation]
+    recommandations_ia:     str

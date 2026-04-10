@@ -18,6 +18,8 @@ try:
     print(" Recommandations :")
     for reco in resultat["toutes_recommandations"]:
         print(f"   → {reco['critere']} : {reco['message']}")
-
+    print("\n✅ Recommandations IA :")
+    print(resultat["recommandations_ia"])
 except Exception as e:
     print(" Erreur :", str(e))
+    

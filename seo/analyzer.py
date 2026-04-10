@@ -11,6 +11,7 @@ from seo.checkers.c7_response_time import VerificateurTempsReponse
 from seo.checkers.c8_https import VerificateurHTTPS
 from seo.checkers.c9_url_structure import VerificateurStructureURL
 from seo.checkers.c10_viewport import VerificateurViewport
+from seo.ai_recommandations import generer_recommandations_ia
 
 #Liste de tous les vérificateurs :
 VERIFICATEURS = [
@@ -71,8 +72,18 @@ def analyser(url: str) -> dict:
                 "critere": resultat["nom"],
                 "message": recommandation
             })
+            
+    # Étape 6 — Générer les recommandations IA
+    recommandations_ia = generer_recommandations_ia({
+    "url_finale":       recupere["final_url"],
+    "score_global":     score_global,
+    "grade":            grade,
+    "temps_reponse_ms": recupere["response_time_ms"],
+    "est_https":        recupere["is_https"],
+    "criteres":         resultats
+})
 
-    #Étape 6 : Retourner le rapport complet
+    #Étape 7 : Retourner le rapport complet
     return {
         "url":                    url,
         "url_finale":             recupere["final_url"],
@@ -82,5 +93,6 @@ def analyser(url: str) -> dict:
         "est_https":              recupere["is_https"],
         "statut_http":            recupere["status_code"],
         "criteres":               resultats,
-        "toutes_recommandations": toutes_recommandations
+        "toutes_recommandations": toutes_recommandations,
+        "recommandations_ia":     recommandations_ia 
     }
