@@ -7,12 +7,19 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.config import settings
 
-engine = create_async_engine(settings.database_url, echo=True)
+engine = create_async_engine(
+    settings.database_url,
+    echo          = True,
+    pool_pre_ping = True,
+    pool_recycle  = 1800,
+    pool_size     = 5,
+    max_overflow  = 10
+)
 
 AsyncSessionLocal = sessionmaker(
-    bind=engine,
-    class_=AsyncSession,
-    expire_on_commit=False
+    bind             = engine,
+    class_           = AsyncSession,
+    expire_on_commit = False
 )
 
 Base = declarative_base()
