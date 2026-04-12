@@ -10,7 +10,7 @@ def generer_recommandations_ia(resultat: dict) -> str:
     et retourne des recommandations personnalisées
     """
 
-    client = anthropic.Anthropic(api_key=os.getenv("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"))
+    client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
     # Prépare les critères échoués et en avertissement
     criteres_echoues = [
