@@ -58,7 +58,7 @@ Sois concret, précis et adapte tes conseils au contexte de ce site spécifique.
     """
 
     reponse = client.messages.create(
-        model      = "claude-opus-4-5",
+        model      = "claude-sonnet-4-5",
         max_tokens = 2048,
         messages   = [{"role": "user", "content": prompt}]
     )
