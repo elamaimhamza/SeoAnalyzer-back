@@ -10,28 +10,28 @@ def generer_recommandations_ia(resultat: dict) -> str:
     et retourne des recommandations personnalisées
     """
 
-    client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+    try:
+        client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
-    # Prépare les critères échoués et en avertissement
-    criteres_echoues = [
-        f"{c['nom']} ({c['score']}/{c['score_max']} pts)"
-        for c in resultat["criteres"]
-        if c["statut"] == "échoué"
-    ]
+        criteres_echoues = [
+            f"{c['nom']} ({c['score']}/{c['score_max']} pts)"
+            for c in resultat["criteres"]
+            if c["statut"] == "échoué"
+        ]
 
-    criteres_avertissement = [
-        f"{c['nom']} ({c['score']}/{c['score_max']} pts)"
-        for c in resultat["criteres"]
-        if c["statut"] == "avertissement"
-    ]
+        criteres_avertissement = [
+            f"{c['nom']} ({c['score']}/{c['score_max']} pts)"
+            for c in resultat["criteres"]
+            if c["statut"] == "avertissement"
+        ]
 
-    criteres_reussis = [
-        c["nom"]
-        for c in resultat["criteres"]
-        if c["statut"] == "réussi"
-    ]
+        criteres_reussis = [
+            c["nom"]
+            for c in resultat["criteres"]
+            if c["statut"] == "réussi"
+        ]
 
-    prompt = f"""
+        prompt = f"""
 Tu es un expert SEO senior. Voici les résultats d'une analyse SEO pour le site : {resultat['url_finale']}
 
 SCORE GLOBAL : {resultat['score_global']}/100 — Grade : {resultat['grade']}
@@ -55,16 +55,28 @@ Le rapport doit contenir :
 4. Un conseil final encourageant
 
 Sois concret, précis et adapte tes conseils au contexte de ce site spécifique.
-    """
+        """
 
-    reponse = client.messages.create(
-        model      = "claude-sonnet-4-5",
-        max_tokens = 2048,
-        messages   = [{"role": "user", "content": prompt}]
-    )
+        reponse = client.messages.create(
+            model      = "claude-sonnet-4-5",
+            max_tokens = 2048,
+            messages   = [{"role": "user", "content": prompt}]
+        )
 
-    contenu = reponse.content[0]
-    if hasattr(contenu, 'text'):
-        return contenu.text
-    else:
-        return str(contenu)
+        print("✅ Type reponse      :", type(reponse))
+        print("✅ Contenu           :", reponse.content)
+        print("✅ Premier élément   :", reponse.content[0])
+        print("✅ Type premier elem :", type(reponse.content[0]))
+
+        contenu = reponse.content[0]
+        if hasattr(contenu, 'text'):
+            return contenu.text
+        else:
+            return str(contenu)
+
+    except Exception as e:
+        print("❌ ERREUR IA DÉTAILLÉE :", str(e))
+        print("❌ TYPE ERREUR        :", type(e))
+        import traceback
+        traceback.print_exc()
+        raise e
