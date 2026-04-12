@@ -63,4 +63,8 @@ Sois concret, précis et adapte tes conseils au contexte de ce site spécifique.
         messages   = [{"role": "user", "content": prompt}]
     )
 
-    return reponse.content[0].text
+    contenu = reponse.content[0]
+    if hasattr(contenu, 'text'):
+        return contenu.text
+    else:
+        return str(contenu)
