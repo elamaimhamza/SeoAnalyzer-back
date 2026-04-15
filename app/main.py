@@ -23,7 +23,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins     = ["http://localhost:5173","https://seo-analyzer-front.vercel.app"],
+    allow_origins     = ["http://localhost:5173","https://seoanalyzerai.netlify.app"],
     allow_credentials = True,
     allow_methods     = ["*"],
     allow_headers     = ["*"],
